@@ -70,6 +70,8 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     
+    [self.cities removeAllObjects];
+    
     CLGeocoder *geo = [CLGeocoder new];
     [geo geocodeAddressString:searchBar.text completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
         for (CLPlacemark *mark in placemarks) {
@@ -81,6 +83,20 @@
     }];
     [searchBar resignFirstResponder];
     
+    searchBar.text = @"";
+    
 }
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSString* selectedCity = [self.cities objectAtIndex:indexPath.row];
+    
+    [self.delegate citySelected:selectedCity];
+    
+    [self dismissViewControllerAnimated:YES completion:^{}];
+}
+
 
 @end

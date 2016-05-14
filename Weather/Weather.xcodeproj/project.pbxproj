@@ -34,6 +34,7 @@
 		95006D3C1CE7A9A700F3B685 /* CitiesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CitiesTableViewController.m; sourceTree = "<group>"; };
 		95006D3E1CE7AA5500F3B685 /* SearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewController.h; sourceTree = "<group>"; };
 		95006D3F1CE7AA5500F3B685 /* SearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewController.m; sourceTree = "<group>"; };
+		95006D411CE7CA0400F3B685 /* SearchCitiesDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCitiesDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +71,7 @@
 				95006D221CE79C3A00F3B685 /* AppDelegate.m */,
 				95006D3B1CE7A9A700F3B685 /* CitiesTableViewController.h */,
 				95006D3C1CE7A9A700F3B685 /* CitiesTableViewController.m */,
+				95006D411CE7CA0400F3B685 /* SearchCitiesDelegate.h */,
 				95006D3E1CE7AA5500F3B685 /* SearchTableViewController.h */,
 				95006D3F1CE7AA5500F3B685 /* SearchTableViewController.m */,
 				95006D241CE79C3A00F3B685 /* ViewController.h */,

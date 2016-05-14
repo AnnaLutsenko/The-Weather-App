@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SearchCitiesDelegate.h"
 
 @interface CitiesTableViewController : UITableViewController
 
 @property (strong, nonatomic) NSMutableArray* cities;
+
 
 @end
