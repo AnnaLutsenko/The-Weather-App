@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ALTableViewController.h"
 
 @interface AppDelegate ()
 
