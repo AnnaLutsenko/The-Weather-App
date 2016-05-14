@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface SearchTableViewController : UITableViewController
+@interface SearchTableViewController : UITableViewController <UISearchBarDelegate>
+
+@property (strong, nonatomic) NSMutableArray* cities;
 
 - (IBAction)actionCancel:(id)sender;
 
