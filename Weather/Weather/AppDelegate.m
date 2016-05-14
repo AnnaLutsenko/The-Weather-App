@@ -7,7 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "ALTableViewController.h"
+#import "CitiesTableViewController.h"
+#import "SearchTableViewController.h"
 
 @interface AppDelegate ()
 

@@ -1,5 +1,5 @@
 //
-//  ALTableViewController.h
+//  CitiesTableViewController.h
 //  Weather
 //
 //  Created by Anna on 14.05.16.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ALTableViewController : UITableViewController
+@interface CitiesTableViewController : UITableViewController
 
 @property (strong, nonatomic) NSMutableArray* cities;
 

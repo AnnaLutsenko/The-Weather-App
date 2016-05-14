@@ -1,24 +1,23 @@
 //
-//  ALTableViewController.m
+//  CitiesTableViewController.m
 //  Weather
 //
 //  Created by Anna on 14.05.16.
 //  Copyright © 2016 Anna Lutsenko. All rights reserved.
 //
 
-#import "ALTableViewController.h"
+#import "CitiesTableViewController.h"
 
-@interface ALTableViewController ()
+@interface CitiesTableViewController ()
 
 @end
 
-@implementation ALTableViewController
+@implementation CitiesTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.cities = [[NSMutableArray alloc] initWithObjects:@"Kiev", @"Vinnytsya", @"Lviv", nil];
-    
     
 }
 
@@ -30,12 +29,12 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-
+    
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
+    
     return [self.cities count];
 }
 
@@ -54,6 +53,15 @@
     return cell;
 }
 
+/*
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    
+    // Configure the cell...
+    
+    return cell;
+}
+*/
 
 /*
 // Override to support conditional editing of the table view.
