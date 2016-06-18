@@ -8,6 +8,7 @@
 
 #import "CitiesTableViewController.h"
 #import "SearchTableViewController.h"
+#import "City.h"
 
 @interface CitiesTableViewController ()
 
@@ -18,16 +19,40 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.cities = [[NSMutableArray alloc] initWithObjects:@"Kiev", @"Vinnytsya", @"Lviv", nil];
+    City* lviv = [[City alloc] initWithNameAndId:@"Lviv" idCity:@"702550"];
+    City* kiev = [[City alloc] initWithNameAndId:@"Kiev" idCity:@"703448"];
+    City* dnipropetrovsk = [[City alloc] initWithNameAndId:@"Dnipropetrovsk" idCity:@"709930"];
+    City* ternopil = [[City alloc] initWithNameAndId:@"Ternopil" idCity:@"691650"];
+    City* mariupol = [[City alloc] initWithNameAndId:@"Mariupol" idCity:@"701824"];
+    City* chernivtsi = [[City alloc] initWithNameAndId:@"Chernivtsi" idCity:@"710719"];
+    City* nikopol = [[City alloc] initWithNameAndId:@"Nikopol" idCity:@"700051"];
+    City* chornobyl = [[City alloc] initWithNameAndId:@"Chornobyl" idCity:@"710403"];
+    City* lutsk = [[City alloc] initWithNameAndId:@"Lutsk" idCity:@"702569"];
+    City* kirovohrad = [[City alloc] initWithNameAndId:@"Kirovohrad" idCity:@"705812"];
+    City* vinnytsya = [[City alloc] initWithNameAndId:@"Vinnytsya" idCity:@"689558"];
+    City* vorokhta = [[City alloc] initWithNameAndId:@"Vorokhta" idCity:@"689037"];
+    City* bilhorodDnistrovskyy = [[City alloc] initWithNameAndId:@"Bilhorod-Dnistrovskyy" idCity:@"712160"];
+    City* yalta = [[City alloc] initWithNameAndId:@"Yalta" idCity:@"688533"];
+    City* donetsk = [[City alloc] initWithNameAndId:@"Donetsk" idCity:@"709717"];
+    
+    
+    self.cities = [NSMutableArray arrayWithObjects:kiev, lviv, vinnytsya, dnipropetrovsk, ternopil, mariupol, chernivtsi, nikopol, chornobyl, lutsk, kirovohrad, vorokhta, bilhorodDnistrovskyy, yalta, donetsk, nil];
+    
+    [self.tableView reloadData];
     
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
 
 #pragma mark - UITableViewDataSource
+
+- (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section; {
+    
+    return [NSString stringWithFormat:@"Selected City"];
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
@@ -50,7 +75,9 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", [self.cities objectAtIndex:indexPath.row]];
+    City* city = [self.cities objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", city.nameCity];
     
     return cell;
 }
@@ -92,15 +119,7 @@
 
 
 #pragma mark - Navigation
-/*
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-    if ([segue.destinationViewController isKindOfClass:[SearchTableViewController class]]) {
-        ((SearchTableViewController *)segue.destinationViewController).delegate = self;
-    }
-    
-}
-*/
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.destinationViewController isKindOfClass:[UINavigationController class]]) {
         UINavigationController *nc = (UINavigationController *)segue.destinationViewController;
@@ -112,7 +131,10 @@
 
 #pragma mark - UITableViewDelegate
 
-
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 
 #pragma mark - SearchCitiesDelegate
 

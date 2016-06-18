@@ -29,8 +29,7 @@
     if (!_cities) {
         _cities = [NSMutableArray new];
     }
-    
-    return _cities;
+return _cities;
 }
 
 #pragma mark - Action

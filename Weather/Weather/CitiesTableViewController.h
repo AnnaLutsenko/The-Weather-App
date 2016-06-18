@@ -13,5 +13,4 @@
 
 @property (strong, nonatomic) NSMutableArray* cities;
 
-
 @end

@@ -16,6 +16,7 @@
 		95006D311CE79C3A00F3B685 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95006D2F1CE79C3A00F3B685 /* LaunchScreen.storyboard */; };
 		95006D3D1CE7A9A700F3B685 /* CitiesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95006D3C1CE7A9A700F3B685 /* CitiesTableViewController.m */; };
 		95006D401CE7AA5500F3B685 /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95006D3F1CE7AA5500F3B685 /* SearchTableViewController.m */; };
+		9560F6881D15342B008A7A01 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = 9560F6871D15342B008A7A01 /* City.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,8 @@
 		95006D3E1CE7AA5500F3B685 /* SearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewController.h; sourceTree = "<group>"; };
 		95006D3F1CE7AA5500F3B685 /* SearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewController.m; sourceTree = "<group>"; };
 		95006D411CE7CA0400F3B685 /* SearchCitiesDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCitiesDelegate.h; sourceTree = "<group>"; };
+		9560F6861D15342B008A7A01 /* City.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = City.h; sourceTree = "<group>"; };
+		9560F6871D15342B008A7A01 /* City.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = City.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +72,8 @@
 			children = (
 				95006D211CE79C3A00F3B685 /* AppDelegate.h */,
 				95006D221CE79C3A00F3B685 /* AppDelegate.m */,
+				9560F6861D15342B008A7A01 /* City.h */,
+				9560F6871D15342B008A7A01 /* City.m */,
 				95006D3B1CE7A9A700F3B685 /* CitiesTableViewController.h */,
 				95006D3C1CE7A9A700F3B685 /* CitiesTableViewController.m */,
 				95006D411CE7CA0400F3B685 /* SearchCitiesDelegate.h */,
@@ -170,6 +175,7 @@
 				95006D3D1CE7A9A700F3B685 /* CitiesTableViewController.m in Sources */,
 				95006D401CE7AA5500F3B685 /* SearchTableViewController.m in Sources */,
 				95006D231CE79C3A00F3B685 /* AppDelegate.m in Sources */,
+				9560F6881D15342B008A7A01 /* City.m in Sources */,
 				95006D201CE79C3A00F3B685 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,6 +335,7 @@
 				95006D371CE79C3A00F3B685 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
