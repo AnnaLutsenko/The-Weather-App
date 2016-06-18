@@ -19,21 +19,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    City* lviv = [[City alloc] initWithNameAndId:@"Lviv" idCity:@"702550"];
-    City* kiev = [[City alloc] initWithNameAndId:@"Kiev" idCity:@"703448"];
-    City* dnipropetrovsk = [[City alloc] initWithNameAndId:@"Dnipropetrovsk" idCity:@"709930"];
-    City* ternopil = [[City alloc] initWithNameAndId:@"Ternopil" idCity:@"691650"];
-    City* mariupol = [[City alloc] initWithNameAndId:@"Mariupol" idCity:@"701824"];
-    City* chernivtsi = [[City alloc] initWithNameAndId:@"Chernivtsi" idCity:@"710719"];
-    City* nikopol = [[City alloc] initWithNameAndId:@"Nikopol" idCity:@"700051"];
-    City* chornobyl = [[City alloc] initWithNameAndId:@"Chornobyl" idCity:@"710403"];
-    City* lutsk = [[City alloc] initWithNameAndId:@"Lutsk" idCity:@"702569"];
-    City* kirovohrad = [[City alloc] initWithNameAndId:@"Kirovohrad" idCity:@"705812"];
-    City* vinnytsya = [[City alloc] initWithNameAndId:@"Vinnytsya" idCity:@"689558"];
-    City* vorokhta = [[City alloc] initWithNameAndId:@"Vorokhta" idCity:@"689037"];
-    City* bilhorodDnistrovskyy = [[City alloc] initWithNameAndId:@"Bilhorod-Dnistrovskyy" idCity:@"712160"];
-    City* yalta = [[City alloc] initWithNameAndId:@"Yalta" idCity:@"688533"];
-    City* donetsk = [[City alloc] initWithNameAndId:@"Donetsk" idCity:@"709717"];
+    City* lviv = [[City alloc] initWithNameAndId:@"Lviv" idCity:702550];
+    City* kiev = [[City alloc] initWithNameAndId:@"Kiev" idCity:703448];
+    City* dnipropetrovsk = [[City alloc] initWithNameAndId:@"Dnipropetrovsk" idCity:709930];
+    City* ternopil = [[City alloc] initWithNameAndId:@"Ternopil" idCity:691650];
+    City* mariupol = [[City alloc] initWithNameAndId:@"Mariupol" idCity:701824];
+    City* chernivtsi = [[City alloc] initWithNameAndId:@"Chernivtsi" idCity:710719];
+    City* nikopol = [[City alloc] initWithNameAndId:@"Nikopol" idCity:700051];
+    City* chornobyl = [[City alloc] initWithNameAndId:@"Chornobyl" idCity:710403];
+    City* lutsk = [[City alloc] initWithNameAndId:@"Lutsk" idCity:702569];
+    City* kirovohrad = [[City alloc] initWithNameAndId:@"Kirovohrad" idCity:705812];
+    City* vinnytsya = [[City alloc] initWithNameAndId:@"Vinnytsya" idCity:689558];
+    City* vorokhta = [[City alloc] initWithNameAndId:@"Vorokhta" idCity:689037];
+    City* bilhorodDnistrovskyy = [[City alloc] initWithNameAndId:@"Bilhorod-Dnistrovskyy" idCity:712160];
+    City* yalta = [[City alloc] initWithNameAndId:@"Yalta" idCity:688533];
+    City* donetsk = [[City alloc] initWithNameAndId:@"Donetsk" idCity:709717];
     
     
     self.cities = [NSMutableArray arrayWithObjects:kiev, lviv, vinnytsya, dnipropetrovsk, ternopil, mariupol, chernivtsi, nikopol, chornobyl, lutsk, kirovohrad, vorokhta, bilhorodDnistrovskyy, yalta, donetsk, nil];

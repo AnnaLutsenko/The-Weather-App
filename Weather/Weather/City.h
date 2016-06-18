@@ -12,9 +12,9 @@
 
 
 @property (strong, nonatomic) NSString* nameCity;
-@property (strong, nonatomic) NSString* idCity;
+@property (assign, nonatomic) NSInteger idCity;
 @property (strong, nonatomic) NSURL* cityURL;
 
-- (id) initWithNameAndId:(NSString*) name idCity:(NSString*) idCity;
+- (id) initWithNameAndId:(NSString*) name idCity:(NSInteger) idCity;
 
 @end

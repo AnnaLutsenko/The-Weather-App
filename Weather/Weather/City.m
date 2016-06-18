@@ -10,13 +10,13 @@
 
 @implementation City
 
-- (id) initWithNameAndId:(NSString*) name idCity:(NSString*) idCity {
+- (id) initWithNameAndId:(NSString*) name idCity:(NSInteger) idCity {
     
     self = [super init];
     if (self) {
         self.nameCity = name;
         self.idCity = idCity;
-        NSString* url = [NSString stringWithFormat:@"http://api.openweathermap.org/data/2.5/forecast/city?id=%@&APPID=edc60874e635ded94b5ea2f4101774bc", idCity];
+        NSString* url = [NSString stringWithFormat:@"http://api.openweathermap.org/data/2.5/forecast/city?id=%ld&APPID=edc60874e635ded94b5ea2f4101774bc", idCity];
         self.cityURL = [NSURL URLWithString:url];
     }
     return self;
