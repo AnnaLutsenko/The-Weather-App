@@ -8,6 +8,7 @@
 
 #import "CitiesTableViewController.h"
 #import "SearchTableViewController.h"
+#import "WeatherViewController.h"
 #import "City.h"
 
 @interface CitiesTableViewController ()
@@ -134,6 +135,15 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    WeatherViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"WeatherVC"];
+    
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    City* selectedCity = [self.cities objectAtIndex:indexPath.row];
+    
+    vc.cityURL = selectedCity.cityURL;
+    vc.cityName = selectedCity.nameCity;
 }
 
 #pragma mark - SearchCitiesDelegate
