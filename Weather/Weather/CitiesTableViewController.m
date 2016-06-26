@@ -156,9 +156,14 @@
 
 #pragma mark - SearchCitiesDelegate
 
--(void) citySelected:(NSString*) city {
+-(void) citySelected:(NSDictionary*) city {
     
-    [self.cities addObject:city];
+    NSString *nameCity = city[@"name"];
+    NSInteger idCity = [city[@"_id"] integerValue];
+    
+    City *newCity = [[City alloc] initWithNameAndId:nameCity idCity:idCity];
+    
+    [self.cities addObject:newCity];
     
     [self.tableView reloadData];
 }

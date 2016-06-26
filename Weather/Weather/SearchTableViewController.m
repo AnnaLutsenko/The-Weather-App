@@ -46,6 +46,15 @@
     [super didReceiveMemoryWarning];
     
 }
+
+#pragma mark - Action
+
+- (IBAction)actionCancel:(id)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
 #pragma mark - Search from Dictionary
 // firstSection is array which already filled.
 // contentList array for value of particular key
@@ -100,16 +109,6 @@
     [searchBar resignFirstResponder];
 }
 
-#pragma mark - Action
-
-- (IBAction)actionCancel:(id)sender {
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-}
-
-
-
 #pragma mark - UISearchBarDelegate
 /*
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
@@ -160,9 +159,11 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-//    NSString* selectedCity = [self.cities objectAtIndex:indexPath.row];
-//    
-//    [self.delegate citySelected:selectedCity];
+    NSDictionary* selectedCity = [self.cities objectAtIndex:indexPath.row];
+    
+    NSLog(@"%@", selectedCity);
+    
+    [self.delegate citySelected:selectedCity];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }

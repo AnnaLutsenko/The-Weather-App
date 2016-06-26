@@ -13,7 +13,7 @@
 
 @required;
 
--(void) citySelected:(NSString*) city;
+-(void) citySelected:(NSDictionary*) city;
 
 @end
 
