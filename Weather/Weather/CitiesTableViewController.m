@@ -15,29 +15,45 @@
 
 @end
 
+static NSString *kCitiesArray = @"cities";
+
 @implementation CitiesTableViewController
+
+- (NSMutableArray*)cities {
+    
+    if (!_cities) {
+        _cities = [NSMutableArray new];
+    }
+    
+    return _cities;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    City* lviv = [[City alloc] initWithNameAndId:@"Lviv" idCity:702550];
-    City* kiev = [[City alloc] initWithNameAndId:@"Kiev" idCity:703448];
-    City* dnipropetrovsk = [[City alloc] initWithNameAndId:@"Dnipropetrovsk" idCity:709930];
-    City* ternopil = [[City alloc] initWithNameAndId:@"Ternopil" idCity:691650];
-    City* mariupol = [[City alloc] initWithNameAndId:@"Mariupol" idCity:701824];
-    City* chernivtsi = [[City alloc] initWithNameAndId:@"Chernivtsi" idCity:710719];
-    City* nikopol = [[City alloc] initWithNameAndId:@"Nikopol" idCity:700051];
-    City* chornobyl = [[City alloc] initWithNameAndId:@"Chornobyl" idCity:710403];
-    City* lutsk = [[City alloc] initWithNameAndId:@"Lutsk" idCity:702569];
-    City* kirovohrad = [[City alloc] initWithNameAndId:@"Kirovohrad" idCity:705812];
-    City* vinnytsya = [[City alloc] initWithNameAndId:@"Vinnytsya" idCity:689558];
-    City* vorokhta = [[City alloc] initWithNameAndId:@"Vorokhta" idCity:689037];
-    City* bilhorodDnistrovskyy = [[City alloc] initWithNameAndId:@"Bilhorod-Dnistrovskyy" idCity:712160];
-    City* yalta = [[City alloc] initWithNameAndId:@"Yalta" idCity:688533];
-    City* donetsk = [[City alloc] initWithNameAndId:@"Donetsk" idCity:709717];
+    [self loadCitiesArray];
     
-    
-    self.cities = [NSMutableArray arrayWithObjects:kiev, lviv, vinnytsya, dnipropetrovsk, ternopil, mariupol, chernivtsi, nikopol, chornobyl, lutsk, kirovohrad, vorokhta, bilhorodDnistrovskyy, yalta, donetsk, nil];
+    if (self.cities.count == 0) {
+        City* lviv = [[City alloc] initWithNameAndId:@"Lviv" idCity:702550];
+        City* kiev = [[City alloc] initWithNameAndId:@"Kiev" idCity:703448];
+        City* dnipropetrovsk = [[City alloc] initWithNameAndId:@"Dnipropetrovsk" idCity:709930];
+        City* ternopil = [[City alloc] initWithNameAndId:@"Ternopil" idCity:691650];
+        City* mariupol = [[City alloc] initWithNameAndId:@"Mariupol" idCity:701824];
+        City* chernivtsi = [[City alloc] initWithNameAndId:@"Chernivtsi" idCity:710719];
+        City* nikopol = [[City alloc] initWithNameAndId:@"Nikopol" idCity:700051];
+        City* chornobyl = [[City alloc] initWithNameAndId:@"Chornobyl" idCity:710403];
+        City* lutsk = [[City alloc] initWithNameAndId:@"Lutsk" idCity:702569];
+        City* kirovohrad = [[City alloc] initWithNameAndId:@"Kirovohrad" idCity:705812];
+        City* vinnytsya = [[City alloc] initWithNameAndId:@"Vinnytsya" idCity:689558];
+        City* vorokhta = [[City alloc] initWithNameAndId:@"Vorokhta" idCity:689037];
+        City* bilhorodDnistrovskyy = [[City alloc] initWithNameAndId:@"Bilhorod-Dnistrovskyy" idCity:712160];
+        City* yalta = [[City alloc] initWithNameAndId:@"Yalta" idCity:688533];
+        City* donetsk = [[City alloc] initWithNameAndId:@"Donetsk" idCity:709717];
+        
+        
+        self.cities = [NSMutableArray arrayWithObjects:kiev, lviv, vinnytsya, dnipropetrovsk, ternopil, mariupol, chernivtsi, nikopol, chornobyl, lutsk, kirovohrad, vorokhta, bilhorodDnistrovskyy, yalta, donetsk, nil];
+    }
     
     [self.tableView reloadData];
     
@@ -47,6 +63,32 @@
     [super didReceiveMemoryWarning];
     
 }
+
+#pragma mark - Save and Load
+
+- (void) saveCitiesArray {
+    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    NSMutableArray *archiveArray = [NSMutableArray new];
+    for (City *city in self.cities) {
+        NSData *cityEncodedObject = [NSKeyedArchiver archivedDataWithRootObject:city];
+        [archiveArray addObject:cityEncodedObject];
+    }
+    [userDefaults setObject:archiveArray forKey:kCitiesArray];
+    
+    [userDefaults synchronize];
+}
+
+- (void) loadCitiesArray {
+    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+    NSArray *archivedObjects = [userDefaults objectForKey:kCitiesArray];
+    
+    for (NSData *obj in archivedObjects) {
+        City *city = [NSKeyedUnarchiver unarchiveObjectWithData:obj];
+        [self.cities addObject:city];
+    }
+}
+
 
 #pragma mark - UITableViewDataSource
 
@@ -164,6 +206,8 @@
     City *newCity = [[City alloc] initWithNameAndId:nameCity idCity:idCity];
     
     [self.cities addObject:newCity];
+    
+    [self saveCitiesArray];
     
     [self.tableView reloadData];
 }

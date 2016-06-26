@@ -22,4 +22,15 @@
     return self;
 }
 
+- (instancetype) initWithCoder:(NSCoder *)aDecoder {
+    NSInteger cityID = [[aDecoder decodeObjectForKey:@"id"] integerValue];
+    NSString *cityName = [aDecoder decodeObjectForKey:@"name"];
+    return [self initWithNameAndId:cityName idCity:cityID];
+}
+
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:@(self.idCity) forKey:@"id"];
+    [coder encodeObject:self.nameCity forKey:@"name"];
+}
+
 @end

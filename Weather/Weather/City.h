@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface City : NSObject
-
+@interface City : NSObject <NSCoding>
 
 @property (strong, nonatomic) NSString* nameCity;
 @property (assign, nonatomic) NSInteger idCity;
