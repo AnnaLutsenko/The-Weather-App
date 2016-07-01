@@ -96,13 +96,19 @@
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     NSLog(@"Text change - %d", self.isSearching);
     
+    //Remove all objects first.
+    [self.filteredContentList removeAllObjects];
+    
     if([searchText length] != 0) {
         self.isSearching = YES;
         [self searchTableList];
+        
     }
     else {
         self.isSearching = NO;
     }
+    
+    [self.tableView reloadData];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
@@ -165,7 +171,7 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSDictionary* selectedCity = [self.cities objectAtIndex:indexPath.row];
+    NSDictionary* selectedCity = [self.filteredContentList objectAtIndex:indexPath.row];
     
     NSLog(@"%@", selectedCity);
     
