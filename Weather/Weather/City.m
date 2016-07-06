@@ -1,36 +1,13 @@
-//
-//  City.m
-//  Weather
-//
-//  Created by Anna on 18.06.16.
-//  Copyright © 2016 Anna Lutsenko. All rights reserved.
-//
-
 #import "City.h"
+
+@interface City ()
+
+// Private interface goes here.
+
+@end
 
 @implementation City
 
-- (id) initWithNameAndId:(NSString*) name idCity:(NSInteger) idCity {
-    
-    self = [super init];
-    if (self) {
-        self.nameCity = name;
-        self.idCity = idCity;
-        NSString* url = [NSString stringWithFormat:@"http://api.openweathermap.org/data/2.5/forecast/city?id=%ld&APPID=edc60874e635ded94b5ea2f4101774bc", idCity];
-        self.cityURL = [NSURL URLWithString:url];
-    }
-    return self;
-}
-
-- (instancetype) initWithCoder:(NSCoder *)aDecoder {
-    NSInteger cityID = [[aDecoder decodeObjectForKey:@"id"] integerValue];
-    NSString *cityName = [aDecoder decodeObjectForKey:@"name"];
-    return [self initWithNameAndId:cityName idCity:cityID];
-}
-
-- (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeObject:@(self.idCity) forKey:@"id"];
-    [coder encodeObject:self.nameCity forKey:@"name"];
-}
+// Custom logic goes here.
 
 @end

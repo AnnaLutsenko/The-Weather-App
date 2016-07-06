@@ -32,28 +32,8 @@ static NSString *kCitiesArray = @"cities";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self loadCitiesArray];
     
-    if (self.cities.count == 0) {
-        City* lviv = [[City alloc] initWithNameAndId:@"Lviv" idCity:702550];
-        City* kiev = [[City alloc] initWithNameAndId:@"Kiev" idCity:703448];
-        City* dnipropetrovsk = [[City alloc] initWithNameAndId:@"Dnipropetrovsk" idCity:709930];
-        City* ternopil = [[City alloc] initWithNameAndId:@"Ternopil" idCity:691650];
-        City* mariupol = [[City alloc] initWithNameAndId:@"Mariupol" idCity:701824];
-        City* chernivtsi = [[City alloc] initWithNameAndId:@"Chernivtsi" idCity:710719];
-        City* nikopol = [[City alloc] initWithNameAndId:@"Nikopol" idCity:700051];
-        City* chornobyl = [[City alloc] initWithNameAndId:@"Chornobyl" idCity:710403];
-        City* lutsk = [[City alloc] initWithNameAndId:@"Lutsk" idCity:702569];
-        City* kirovohrad = [[City alloc] initWithNameAndId:@"Kirovohrad" idCity:705812];
-        City* vinnytsya = [[City alloc] initWithNameAndId:@"Vinnytsya" idCity:689558];
-        City* vorokhta = [[City alloc] initWithNameAndId:@"Vorokhta" idCity:689037];
-        City* bilhorodDnistrovskyy = [[City alloc] initWithNameAndId:@"Bilhorod-Dnistrovskyy" idCity:712160];
-        City* yalta = [[City alloc] initWithNameAndId:@"Yalta" idCity:688533];
-        City* donetsk = [[City alloc] initWithNameAndId:@"Donetsk" idCity:709717];
-        
-        
-        self.cities = [NSMutableArray arrayWithObjects:kiev, lviv, vinnytsya, dnipropetrovsk, ternopil, mariupol, chernivtsi, nikopol, chornobyl, lutsk, kirovohrad, vorokhta, bilhorodDnistrovskyy, yalta, donetsk, nil];
-    }
+    
     
     [self.tableView reloadData];
     
@@ -63,7 +43,7 @@ static NSString *kCitiesArray = @"cities";
     [super didReceiveMemoryWarning];
     
 }
-
+/*
 #pragma mark - Save and Load
 
 - (void) saveCitiesArray {
@@ -88,7 +68,7 @@ static NSString *kCitiesArray = @"cities";
         [self.cities addObject:city];
     }
 }
-
+*/
 
 #pragma mark - UITableViewDataSource
 
@@ -117,9 +97,9 @@ static NSString *kCitiesArray = @"cities";
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     
-    City* city = [self.cities objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", city.nameCity];
+    
+    
     
     return cell;
 }
@@ -131,7 +111,7 @@ static NSString *kCitiesArray = @"cities";
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.cities removeObjectAtIndex:indexPath.row];
     [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    [self saveCitiesArray];
+   // [self saveCitiesArray];
 }
 
 /*
@@ -191,10 +171,7 @@ static NSString *kCitiesArray = @"cities";
     
     [self.navigationController pushViewController:vc animated:YES];
     
-    City* selectedCity = [self.cities objectAtIndex:indexPath.row];
-    
-    vc.cityURL = selectedCity.cityURL;
-    vc.cityName = selectedCity.nameCity;
+   
 }
 
 #pragma mark - SearchCitiesDelegate
@@ -204,11 +181,10 @@ static NSString *kCitiesArray = @"cities";
     NSString *nameCity = city[@"name"];
     NSInteger idCity = [city[@"_id"] integerValue];
     
-    City *newCity = [[City alloc] initWithNameAndId:nameCity idCity:idCity];
     
-    [self.cities addObject:newCity];
     
-    [self saveCitiesArray];
+    
+  //  [self saveCitiesArray];
     
     [self.tableView reloadData];
 }

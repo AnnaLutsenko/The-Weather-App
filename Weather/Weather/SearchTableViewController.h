@@ -10,6 +10,8 @@
 #import <CoreLocation/CoreLocation.h>
 #import "SearchCitiesDelegate.h"
 
+
+
 @interface SearchTableViewController : UITableViewController <UISearchBarDelegate>
 
 @property (strong, nonatomic) NSMutableArray *contentList;
