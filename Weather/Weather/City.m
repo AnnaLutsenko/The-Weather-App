@@ -8,6 +8,11 @@
 
 @implementation City
 
-// Custom logic goes here.
+- (NSURL*) cityURL {
+    
+    NSString *url = [NSString stringWithFormat:@"http://api.openweathermap.org/data/2.5/forecast/city?id=%ld&APPID=edc60874e635ded94b5ea2f4101774bc", [self.idCity integerValue]];
+
+    return [NSURL URLWithString:url];
+}
 
 @end

@@ -8,9 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
-#import "SearchCitiesDelegate.h"
+#import "City.h"
 
+#ifndef SearchCitiesDelegate_h
+#define SearchCitiesDelegate_h
 
+@protocol SearchCitiesDelegate <NSObject>
+
+@required;
+
+-(void) citySelected:(City*) city;
+
+@end
+
+#endif /* SearchCitiesDelegate_h */
 
 @interface SearchTableViewController : UITableViewController <UISearchBarDelegate>
 
@@ -18,7 +29,7 @@
 @property (strong, nonatomic) NSMutableArray *filteredContentList;
 @property (assign, nonatomic) BOOL isSearching;
 
-@property (strong, nonatomic) NSMutableArray* cities;
+@property (strong, nonatomic) NSArray* cities;
 
 @property (weak, nonatomic) IBOutlet UISearchBar *citySearchBar;
 

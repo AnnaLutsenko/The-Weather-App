@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *weatherTableView;
 
 @property (strong, nonatomic) NSString* cityName;
+@property (strong, nonatomic) NSString* country;
 @property (strong, nonatomic) NSURL* cityURL;
 
 @end

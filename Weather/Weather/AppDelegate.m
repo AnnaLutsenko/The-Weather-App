@@ -12,84 +12,35 @@
 #import "City.h"
 
 @interface AppDelegate ()
-
+@property (strong, nonatomic) NSString* fileName;
+@property (strong, nonatomic) NSString* filePath;
 @end
 
 @implementation AppDelegate
 
-#pragma mark - City
-/*
-- (void) addCity {
+- (void) copyFile {
     
     NSError *error = nil;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *path = [documentsDirectory stringByAppendingPathComponent:self.fileName];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
     
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
-    if (!error) {
-        NSLog(@"%@", [error localizedDescription]);
+    if (![fileManager fileExistsAtPath:path]) {
+        NSLog(@"Coping database to user documets");
+        NSString *pathToFileInBundle = [[NSBundle mainBundle] pathForResource:@"Weather" ofType:@"sqlite"];
+        [fileManager copyItemAtPath:pathToFileInBundle toPath:path error:&error];
+    } else {
+        NSLog(@"users database already configured");
     }
-    
-    NSInteger countArray = [self.citiesArray count];
-    
-    for (int i = 0; i < countArray; i++) {
-        City *city = [NSEntityDescription insertNewObjectForEntityForName:@"City"
-                                                   inManagedObjectContext:appDelegate.managedObjectContext];
-        
-        city.name = self.citiesArray[i][@"name"];
-        city.country = self.citiesArray[i][@"country"];
-        city.idCity = self.citiesArray[i][@"_id"];
-        city.latCoord = self.citiesArray[i][@"coord"][@"lat"];
-        city.lonCoord = self.citiesArray[i][@"coord"][@"lon"];
-    }
-    
-    [appDelegate.managedObjectContext save:&error];
-}
- */
-
-- (NSArray*) allObject {
-    
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    
-    NSEntityDescription *description = [NSEntityDescription entityForName:@"City"
-                                                   inManagedObjectContext:appDelegate.managedObjectContext];
-    
-    [request setEntity:description];
-    // [request setResultType:NSDictionaryResultType];
-    
-    NSError *requestError = nil;
-    NSArray *resultArray = [appDelegate.managedObjectContext executeFetchRequest:request error:&requestError];
-    
-    if (requestError) {
-        NSLog(@"%@", [requestError localizedDescription]);
-    }
-    
-    return resultArray;
-}
-
-- (void) printAllObject {
-    NSArray *allObject = [self allObject];
-    NSLog(@"COUNT = %ld", [allObject count]);
-    for (City *obj in allObject) {
-       // NSLog(@"City = %@;  country:%@;  idCity:%@;  lat:%@;  lot:%@;", obj.name, obj.country, obj.idCity, obj.latCoord, obj.lonCoord);
-    }
-}
-
-- (void) deleteAllObject {
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    NSArray *allObject = [self allObject];
-    
-    for (City *obj in allObject) {
-        [appDelegate.managedObjectContext deleteObject:obj];
-    }
-    [appDelegate.managedObjectContext save:nil];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [self printAllObject];
+    self.fileName = @"Weather.sqlite";
+    [self copyFile];
     
+
     return YES;
 }
 
@@ -122,13 +73,21 @@
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
-
+/*
 - (NSURL *)applicationDocumentsDirectory {
 
     NSURL *url = [[NSBundle mainBundle] URLForResource:@"Weather" withExtension:@"sqlite"];
     url = [url URLByDeletingLastPathComponent];
     
     return url;
+}
+*/
+- (NSURL *)applicationDocumentsDirectory {
+    // The directory the application uses to store the Core Data store file. This code uses a directory named "com.annalutsenko.SaveFromFileToCoreData" in the application's documents directory.
+    NSURL *docURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    NSLog(@"%@", [docURL path]);
+    
+    return docURL;
 }
 
 - (NSManagedObjectModel *)managedObjectModel {

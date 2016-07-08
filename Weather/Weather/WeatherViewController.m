@@ -66,7 +66,7 @@
 
 - (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     
-    return [NSString stringWithFormat:@"Weather in %@", self.cityName];
+    return [NSString stringWithFormat:@"Weather in %@ in %@", self.cityName, self.country];
 }
 
 

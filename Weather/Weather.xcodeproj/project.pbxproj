@@ -39,7 +39,6 @@
 		95006D3C1CE7A9A700F3B685 /* CitiesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CitiesTableViewController.m; sourceTree = "<group>"; };
 		95006D3E1CE7AA5500F3B685 /* SearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewController.h; sourceTree = "<group>"; };
 		95006D3F1CE7AA5500F3B685 /* SearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewController.m; sourceTree = "<group>"; };
-		95006D411CE7CA0400F3B685 /* SearchCitiesDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCitiesDelegate.h; sourceTree = "<group>"; };
 		950940991D2D78C600ACEF1D /* Weather.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Weather.sqlite; sourceTree = "<group>"; };
 		9509409E1D2D841E00ACEF1D /* _City.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _City.h; sourceTree = "<group>"; };
 		9509409F1D2D841E00ACEF1D /* _City.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _City.m; sourceTree = "<group>"; };
@@ -84,7 +83,6 @@
 				9586736B1D2D479A0048C024 /* Model */,
 				95006D211CE79C3A00F3B685 /* AppDelegate.h */,
 				95006D221CE79C3A00F3B685 /* AppDelegate.m */,
-				95006D411CE7CA0400F3B685 /* SearchCitiesDelegate.h */,
 				9560F68C1D16DCA2008A7A01 /* WeatherCell.h */,
 				9560F68D1D16DCA2008A7A01 /* WeatherCell.m */,
 				95006D3B1CE7A9A700F3B685 /* CitiesTableViewController.h */,

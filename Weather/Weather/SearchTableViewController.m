@@ -7,6 +7,8 @@
 //
 
 #import "SearchTableViewController.h"
+#import "AppDelegate.h"
+#import "City.h"
 
 @interface SearchTableViewController ()
 
@@ -23,9 +25,80 @@
     return _filteredContentList;
 }
 
+#pragma mark - City
+/*
+ - (void) addCity {
+ 
+ NSError *error = nil;
+ 
+ AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+ 
+ if (!error) {
+ NSLog(@"%@", [error localizedDescription]);
+ }
+ 
+ NSInteger countArray = [self.citiesArray count];
+ 
+ for (int i = 0; i < countArray; i++) {
+ City *city = [NSEntityDescription insertNewObjectForEntityForName:@"City"
+ inManagedObjectContext:appDelegate.managedObjectContext];
+ 
+ city.name = self.citiesArray[i][@"name"];
+ city.country = self.citiesArray[i][@"country"];
+ city.idCity = self.citiesArray[i][@"_id"];
+ city.latCoord = self.citiesArray[i][@"coord"][@"lat"];
+ city.lonCoord = self.citiesArray[i][@"coord"][@"lon"];
+ }
+ 
+ [appDelegate.managedObjectContext save:&error];
+ }
+ */
+
+- (NSArray*) allObject {
+    
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription *description = [NSEntityDescription entityForName:@"City"
+                                                   inManagedObjectContext:appDelegate.managedObjectContext];
+    
+    [request setEntity:description];
+    // [request setResultType:NSDictionaryResultType];
+    
+    NSError *requestError = nil;
+    NSArray *resultArray = [appDelegate.managedObjectContext executeFetchRequest:request error:&requestError];
+    
+    if (requestError) {
+        NSLog(@"%@", [requestError localizedDescription]);
+    }
+    
+    return resultArray;
+}
+
+- (void) printAllObject {
+    NSArray *allObject = [self allObject];
+    NSLog(@"COUNT = %ld", [allObject count]);
+    for (City *obj in allObject) {
+        // NSLog(@"City = %@;  country:%@;  idCity:%@;  lat:%@;  lot:%@;", obj.name, obj.country, obj.idCity, obj.latCoord, obj.lonCoord);
+    }
+}
+
+- (void) deleteAllObject {
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    NSArray *allObject = [self allObject];
+    
+    for (City *obj in allObject) {
+        [appDelegate.managedObjectContext deleteObject:obj];
+    }
+    [appDelegate.managedObjectContext save:nil];
+}
+
+#pragma mark - ViewController
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    /*
     NSDictionary *Vyshkovo = @{@"_id":@688717,@"name":@"Vyshkovo",@"country":@"UA"};
     NSDictionary *Vylok = @{@"_id":@688749,@"name":@"Vylok",@"country":@"UA"};
     NSDictionary *Vylkove = @{@"_id":@688750,@"name":@"Vylkove",@"country":@"UA"};
@@ -35,9 +108,10 @@
     NSDictionary *Voykove = @{@"_id":@688904,@"name":@"Voykove",@"country":@"UA"};
     NSDictionary *Voskhod = @{@"_id":@688951,@"name":@"Voskhod",@"country":@"UA"};
     NSDictionary *Vorozhba = @{@"_id":@688961,@"name":@"Vorozhba",@"country":@"UA"};
+    */
     
-    
-    self.cities = [NSMutableArray arrayWithObjects:Vylok, Vylkove, Vvedenka, Vyshkovo, Vradiyivka, Voznesenka, Voykove, Voskhod, Vorozhba, nil];
+    self.cities = [self allObject];
+    //[NSMutableArray arrayWithObjects:Vylok, Vylkove, Vvedenka, Vyshkovo, Vradiyivka, Voznesenka, Voykove, Voskhod, Vorozhba, nil];
     
     
 }
@@ -73,12 +147,30 @@
     
     NSString *searchString = self.citySearchBar.text;
     
-    NSPredicate *filterPredicate = [NSPredicate predicateWithFormat:@"name beginswith[c] %@", searchString];
-    NSArray *filteredArr = [self.cities filteredArrayUsingPredicate:filterPredicate];
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription *description = [NSEntityDescription entityForName:@"City"
+                                                   inManagedObjectContext:appDelegate.managedObjectContext];
+    
+    [request setEntity:description];
+    // [request setResultType:NSDictionaryResultType];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name beginswith[c] %@",searchString];
+    [request setPredicate:predicate];
+    
+    NSError *requestError = nil;
+    NSArray *resultArray = [appDelegate.managedObjectContext executeFetchRequest:request error:&requestError];
+    
+    if (requestError) {
+        NSLog(@"%@", [requestError localizedDescription]);
+    }   
+
     if(self.contentList.count > 0) {
         [self.contentList removeAllObjects];
     }
-    [self.filteredContentList addObjectsFromArray:filteredArr];
+    [self.filteredContentList addObjectsFromArray:resultArray];
     
     [self.tableView reloadData];
 }
@@ -160,7 +252,9 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", self.filteredContentList[indexPath.row][@"name"]];
+    City *city = self.filteredContentList[indexPath.row];
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", city.name];
     
     return cell;
 }
@@ -171,7 +265,7 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSDictionary* selectedCity = [self.filteredContentList objectAtIndex:indexPath.row];
+    City* selectedCity = [self.filteredContentList objectAtIndex:indexPath.row];
     
     NSLog(@"%@", selectedCity);
     

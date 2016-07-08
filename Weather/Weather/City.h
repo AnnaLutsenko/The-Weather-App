@@ -1,5 +1,7 @@
 #import "_City.h"
 
 @interface City : _City
-// Custom logic goes here.
+
+@property (strong, nonatomic) NSURL* cityURL;
+
 @end

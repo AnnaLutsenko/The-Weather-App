@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SearchCitiesDelegate.h"
+#import "SearchTableViewController.h"
 
 @interface CitiesTableViewController : UITableViewController <SearchCitiesDelegate>
 
