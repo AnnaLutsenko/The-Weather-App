@@ -14,6 +14,8 @@
 
 @end
 
+static NSString *kCityID = @"cityID";
+
 @implementation SearchTableViewController
 
 - (NSMutableArray *)filteredContentList {
@@ -98,21 +100,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    /*
-    NSDictionary *Vyshkovo = @{@"_id":@688717,@"name":@"Vyshkovo",@"country":@"UA"};
-    NSDictionary *Vylok = @{@"_id":@688749,@"name":@"Vylok",@"country":@"UA"};
-    NSDictionary *Vylkove = @{@"_id":@688750,@"name":@"Vylkove",@"country":@"UA"};
-    NSDictionary *Vvedenka = @{@"_id":@688805,@"name":@"Vvedenka",@"country":@"UA"};
-    NSDictionary *Vradiyivka = @{@"_id":@688846,@"name":@"Vradiyivka",@"country":@"UA"};
-    NSDictionary *Voznesenka = @{@"_id":@688865,@"name":@"Voznesenka",@"country":@"UA"};
-    NSDictionary *Voykove = @{@"_id":@688904,@"name":@"Voykove",@"country":@"UA"};
-    NSDictionary *Voskhod = @{@"_id":@688951,@"name":@"Voskhod",@"country":@"UA"};
-    NSDictionary *Vorozhba = @{@"_id":@688961,@"name":@"Vorozhba",@"country":@"UA"};
-    */
     
     self.cities = [self allObject];
-    //[NSMutableArray arrayWithObjects:Vylok, Vylkove, Vvedenka, Vyshkovo, Vradiyivka, Voznesenka, Voykove, Voskhod, Vorozhba, nil];
-    
     
 }
 
@@ -157,7 +146,11 @@
     [request setEntity:description];
     // [request setResultType:NSDictionaryResultType];
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name beginswith[c] %@",searchString];
+    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+    NSArray *citiesID = [userDefaults objectForKey:kCityID];
+    if (citiesID == nil) { return; }
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(name beginswith[c] %@) AND !(idCity IN %@)", searchString, citiesID];
     [request setPredicate:predicate];
     
     NSError *requestError = nil;
@@ -171,11 +164,15 @@
         [self.contentList removeAllObjects];
     }
     [self.filteredContentList addObjectsFromArray:resultArray];
-    
+   
     [self.tableView reloadData];
 }
 
+#pragma mark - UISearchBarDelegate
+
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    
+    [searchBar setShowsCancelButton:YES animated:YES];
     
     if ([searchBar.text length] != 0) {
         self.isSearching = YES;
@@ -204,6 +201,8 @@
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
+    [searchBar setShowsCancelButton:NO animated:YES];
     NSLog(@"Cancel clicked");
 }
 
@@ -213,7 +212,6 @@
     [searchBar resignFirstResponder];
 }
 
-#pragma mark - UISearchBarDelegate
 /*
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     

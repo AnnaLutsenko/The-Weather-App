@@ -38,8 +38,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     self.fileName = @"Weather.sqlite";
-    [self copyFile];
-    
+  //  [self copyFile];
 
     return YES;
 }
@@ -110,6 +109,25 @@
     
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Weather.sqlite"];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:storeURL.path]) {
+        NSArray *sourceSqliteURLs = @[[[NSBundle mainBundle] URLForResource:@"Weather" withExtension:@"sqlite"],
+                                      [[NSBundle mainBundle] URLForResource:@"Weather" withExtension:@"sqlite-wal"],
+                                      [[NSBundle mainBundle] URLForResource:@"Weather" withExtension:@"sqlite-shm"]];
+        
+        NSArray *destSqliteURLs = @[[self.applicationDocumentsDirectory URLByAppendingPathComponent:@"Weather.sqlite"],
+                                   [self.applicationDocumentsDirectory URLByAppendingPathComponent:@"Weather.sqlite" ],
+                                   [self.applicationDocumentsDirectory URLByAppendingPathComponent:@"Weather.sqlite"]];
+        
+        
+        NSError *errorSQL = nil;
+        for (int i = 0; i < sourceSqliteURLs.count; i++) {
+            [[NSFileManager defaultManager] copyItemAtURL:sourceSqliteURLs[i] toURL:destSqliteURLs[i] error:&errorSQL];
+        }
+        
+    }
+    
+    
     NSError *error = nil;
     NSString *failureReason = @"There was an error creating or loading the application's saved data.";
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
@@ -121,6 +139,10 @@
         error = [NSError errorWithDomain:@"YOUR_ERROR_DOMAIN" code:9999 userInfo:dict];
         // Replace this with code to handle the error appropriately.
         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+        
+        [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil];
+        [_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error];
+        
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }

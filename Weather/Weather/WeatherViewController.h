@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WeatherViewController : UIViewController
+@interface WeatherViewController : UITableViewController <UICollectionViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UITableView *weatherTableView;
+//@property (weak, nonatomic) IBOutlet UITableView *weatherTableView;
+@property (weak, nonatomic) IBOutlet UICollectionView *TempCollectionView;
 
 @property (strong, nonatomic) NSString* cityName;
 @property (strong, nonatomic) NSString* country;

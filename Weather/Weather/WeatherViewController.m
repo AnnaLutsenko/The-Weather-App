@@ -7,7 +7,7 @@
 //
 
 #import "WeatherViewController.h"
-#import "WeatherCell.h"
+#import "TemperatureCollectionViewCell.h"
 
 @interface WeatherViewController ()
 
@@ -54,7 +54,7 @@
                          self.arrayWithWeater = dic[@"list"];
                          
                          dispatch_async(dispatch_get_main_queue(), ^{
-                             [self.weatherTableView reloadData];
+                             [self.TempCollectionView reloadData];
                          });
                          
                      }
@@ -64,17 +64,17 @@
 
 #pragma mark - UITableViewDataSource
 
-- (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    
-    return [NSString stringWithFormat:@"Weather in %@ in %@", self.cityName, self.country];
-}
+//- (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+//    
+//    return [NSString stringWithFormat:@"Weather in %@ in %@", self.cityName, self.country];
+//}
 
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    return (self.arrayWithWeater != nil) ? self.arrayWithWeater.count : 0;
-}
-
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+//    
+//    return (self.arrayWithWeater != nil) ? self.arrayWithWeater.count : 0;
+//}
+/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString* cellIdentifier = @"Cell";
@@ -84,11 +84,11 @@
     }
     
     NSInteger temperature = roundf([self.arrayWithWeater[indexPath.row][@"main"][@"temp"] floatValue]) - 273;
-    /*
-     Функция round округлает значение.
-     Если мы флоат просто присвоим инту - просто обрежется дробная часть.
-     -273 это перевод из кельвинов в цельсии
-     */
+ 
+//     Функция round округлает значение.
+//     Если мы флоат просто присвоим инту - просто обрежется дробная часть.
+//     -273 это перевод из кельвинов в цельсии
+ 
     cell.tempLabel.text = [NSString stringWithFormat:@"%li", (long)temperature];
     
     // cell.tempLabel.text = [NSString stringWithFormat:@"%@", self.arrayWithWeater[indexPath.row][@"main"][@"temp"]];
@@ -100,6 +100,42 @@
     cell.dateLabel.text = [formatter stringFromDate:date];
     
     //cell.dateLabel.text = [NSString stringWithFormat:@"%@",self.arrayWithWeater[indexPath.row][@"dt"]];
+    
+    return cell;
+}
+*/
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return (self.arrayWithWeater != nil) ? self.arrayWithWeater.count : 0;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString* cellIdentifier = @"Cell";
+    
+    TemperatureCollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    
+    NSInteger temperature = roundf([self.arrayWithWeater[indexPath.item][@"main"][@"temp"] floatValue]) - 273;
+    
+    //     Функция round округлает значение.
+    //     Если мы флоат просто присвоим инту - просто обрежется дробная часть.
+    //     -273 это перевод из кельвинов в цельсии
+    
+    cell.tempLbl.text = [NSString stringWithFormat:@"%li", (long)temperature];
+    
+    // cell.tempLabel.text = [NSString stringWithFormat:@"%@", self.arrayWithWeater[indexPath.row][@"main"][@"temp"]];
+    
+    NSInteger timeinterval = [self.arrayWithWeater[indexPath.item][@"dt"] integerValue];
+    NSDate * date = [[NSDate alloc] initWithTimeIntervalSince1970:timeinterval];
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    formatter.dateFormat = @"dd.MM.yyyy\nHH:mm";
+    cell.dateLbl.text = [formatter stringFromDate:date];
+    
+    //cell.dateLabel.text = [NSString stringWithFormat:@"%@",self.arrayWithWeater[indexPath.row][@"dt"]];
+    
+        
+    
     
     return cell;
 }
