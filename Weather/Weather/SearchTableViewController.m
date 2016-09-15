@@ -144,13 +144,18 @@ static NSString *kCityID = @"cityID";
                                                    inManagedObjectContext:appDelegate.managedObjectContext];
     
     [request setEntity:description];
-    // [request setResultType:NSDictionaryResultType];
+//     [request setResultType:NSDictionaryResultType];
     
     NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
     NSArray *citiesID = [userDefaults objectForKey:kCityID];
-    if (citiesID == nil) { return; }
+    NSString *predicateFormat;
+    NSPredicate *predicate;
+    if (citiesID == nil) {
+        predicate = [NSPredicate predicateWithFormat:@"name beginswith[c] %@", searchString];
+    } else {
+        predicate = [NSPredicate predicateWithFormat:@"(name beginswith[c] %@) AND !(idCity IN %@)", searchString, citiesID];
+    }
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(name beginswith[c] %@) AND !(idCity IN %@)", searchString, citiesID];
     [request setPredicate:predicate];
     
     NSError *requestError = nil;
@@ -176,8 +181,7 @@ static NSString *kCityID = @"cityID";
     
     if ([searchBar.text length] != 0) {
         self.isSearching = YES;
-    }
-    else {
+    } else {
         self.isSearching = NO;
     }
 }

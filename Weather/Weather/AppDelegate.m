@@ -38,9 +38,28 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     self.fileName = @"Weather.sqlite";
-  //  [self copyFile];
-
+    [self copyFile];
+    [self fetchAllCities];
     return YES;
+}
+
+- (void)fetchAllCities {
+    NSManagedObjectContext *context = [self managedObjectContext];
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"City"];
+    
+    NSError *error = nil;
+    
+    NSArray *results = [context executeFetchRequest:request error:&error];
+    
+    if (error != nil) {
+        
+        //Deal with failure
+    }
+    else {
+        
+        //Deal with success
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
