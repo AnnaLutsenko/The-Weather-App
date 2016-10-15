@@ -22,6 +22,8 @@
 		950940C31D3D89FC00ACEF1D /* Weather.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 950940C01D3D89FC00ACEF1D /* Weather.sqlite */; };
 		950940C41D3D89FC00ACEF1D /* Weather.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 950940C11D3D89FC00ACEF1D /* Weather.sqlite-shm */; };
 		950940C51D3D89FC00ACEF1D /* Weather.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 950940C21D3D89FC00ACEF1D /* Weather.sqlite-wal */; };
+		950A8AAA1DB2574A00D940FC /* DayWeatherDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 950A8AA91DB2574A00D940FC /* DayWeatherDataSource.m */; };
+		950A8AAE1DB258A700D940FC /* DayCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 950A8AAD1DB258A700D940FC /* DayCellTableViewCell.m */; };
 		9560F68B1D16D903008A7A01 /* WeatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9560F68A1D16D903008A7A01 /* WeatherViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +52,10 @@
 		950940C01D3D89FC00ACEF1D /* Weather.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Weather.sqlite; sourceTree = "<group>"; };
 		950940C11D3D89FC00ACEF1D /* Weather.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Weather.sqlite-shm"; sourceTree = "<group>"; };
 		950940C21D3D89FC00ACEF1D /* Weather.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Weather.sqlite-wal"; sourceTree = "<group>"; };
+		950A8AA81DB2574A00D940FC /* DayWeatherDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayWeatherDataSource.h; sourceTree = "<group>"; };
+		950A8AA91DB2574A00D940FC /* DayWeatherDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayWeatherDataSource.m; sourceTree = "<group>"; };
+		950A8AAC1DB258A700D940FC /* DayCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayCellTableViewCell.h; sourceTree = "<group>"; };
+		950A8AAD1DB258A700D940FC /* DayCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayCellTableViewCell.m; sourceTree = "<group>"; };
 		9560F6891D16D903008A7A01 /* WeatherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherViewController.h; sourceTree = "<group>"; };
 		9560F68A1D16D903008A7A01 /* WeatherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,6 +92,7 @@
 			children = (
 				9586736B1D2D479A0048C024 /* Model */,
 				950940AA1D3D376900ACEF1D /* Cell */,
+				950A8AAB1DB2582000D940FC /* Day Weather */,
 				95006D211CE79C3A00F3B685 /* AppDelegate.h */,
 				95006D221CE79C3A00F3B685 /* AppDelegate.m */,
 				95006D3B1CE7A9A700F3B685 /* CitiesTableViewController.h */,
@@ -121,6 +128,17 @@
 				950940A81D3D360200ACEF1D /* TemperatureCollectionViewCell.m */,
 			);
 			name = Cell;
+			sourceTree = "<group>";
+		};
+		950A8AAB1DB2582000D940FC /* Day Weather */ = {
+			isa = PBXGroup;
+			children = (
+				950A8AA81DB2574A00D940FC /* DayWeatherDataSource.h */,
+				950A8AA91DB2574A00D940FC /* DayWeatherDataSource.m */,
+				950A8AAC1DB258A700D940FC /* DayCellTableViewCell.h */,
+				950A8AAD1DB258A700D940FC /* DayCellTableViewCell.m */,
+			);
+			name = "Day Weather";
 			sourceTree = "<group>";
 		};
 		9586736B1D2D479A0048C024 /* Model */ = {
@@ -211,6 +229,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				950A8AAA1DB2574A00D940FC /* DayWeatherDataSource.m in Sources */,
 				950940A31D2D841E00ACEF1D /* City.m in Sources */,
 				950940A21D2D841E00ACEF1D /* _City.m in Sources */,
 				95006D2C1CE79C3A00F3B685 /* Weather.xcdatamodeld in Sources */,
@@ -220,6 +239,7 @@
 				95006D401CE7AA5500F3B685 /* SearchTableViewController.m in Sources */,
 				950940A91D3D360200ACEF1D /* TemperatureCollectionViewCell.m in Sources */,
 				95006D231CE79C3A00F3B685 /* AppDelegate.m in Sources */,
+				950A8AAE1DB258A700D940FC /* DayCellTableViewCell.m in Sources */,
 				95006D201CE79C3A00F3B685 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

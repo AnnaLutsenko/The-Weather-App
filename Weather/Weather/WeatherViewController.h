@@ -17,4 +17,6 @@
 @property (strong, nonatomic) NSString* country;
 @property (strong, nonatomic) NSURL* cityURL;
 
+@property (weak, nonatomic) IBOutlet UILabel* cityNameLbl;
+
 @end
