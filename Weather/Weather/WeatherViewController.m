@@ -27,6 +27,7 @@
         _dayWeatherDataSource = [DayWeatherDataSource new];
         _dayWeatherDataSource.dayWeatherTableView = self.dayWeatherTableView;
         _dayWeatherDataSource.dayWeatherTableView.dataSource = _dayWeatherDataSource;
+        _dayWeatherDataSource.cityID = self.cityID;
     }
     return _dayWeatherDataSource;
 }
@@ -40,6 +41,7 @@
     self.session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     
     [self.dayWeatherDataSource load];
+    
     
     
     

@@ -193,6 +193,7 @@ static NSString *kCityID = @"cityID";
     vc.cityURL = selectedCity.cityURL;
     vc.cityName = selectedCity.name;
     vc.country = selectedCity.country;
+    vc.cityID = selectedCity.idCity;
     
 }
 

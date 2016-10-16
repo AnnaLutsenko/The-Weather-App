@@ -189,15 +189,15 @@
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="35" id="ghS-r5-sOI"/>
                                                                         </constraints>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <nil key="textColor"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JC1-Ms-3SS">
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="35" id="Gjc-36-Aef"/>
                                                                         </constraints>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -226,6 +226,14 @@
                                                 <constraint firstAttribute="trailing" secondItem="yFb-SC-4xT" secondAttribute="trailing" id="yV5-Ni-m1r"/>
                                                 <constraint firstItem="yFb-SC-4xT" firstAttribute="top" secondItem="ZLB-9z-2Xn" secondAttribute="top" id="ywg-4w-FgH"/>
                                             </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="40" id="vbi-su-b9e">
+                                        <rect key="frame" x="0.0" y="365" width="320" height="40"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vbi-su-b9e" id="zo2-Cf-jK5">
+                                            <frame key="frameInset" width="320" height="40"/>
+                                            <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>

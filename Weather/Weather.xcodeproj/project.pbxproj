@@ -25,6 +25,8 @@
 		950A8AAA1DB2574A00D940FC /* DayWeatherDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 950A8AA91DB2574A00D940FC /* DayWeatherDataSource.m */; };
 		950A8AAE1DB258A700D940FC /* DayCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 950A8AAD1DB258A700D940FC /* DayCellTableViewCell.m */; };
 		9560F68B1D16D903008A7A01 /* WeatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9560F68A1D16D903008A7A01 /* WeatherViewController.m */; };
+		95B4B63A1DB3CA6E002C8F04 /* WeatherDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95B4B6391DB3CA6E002C8F04 /* WeatherDetailsView.xib */; };
+		95B4B63D1DB3CAAA002C8F04 /* WeatherDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B4B63C1DB3CAAA002C8F04 /* WeatherDetailsView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,9 @@
 		950A8AAD1DB258A700D940FC /* DayCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayCellTableViewCell.m; sourceTree = "<group>"; };
 		9560F6891D16D903008A7A01 /* WeatherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherViewController.h; sourceTree = "<group>"; };
 		9560F68A1D16D903008A7A01 /* WeatherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherViewController.m; sourceTree = "<group>"; };
+		95B4B6391DB3CA6E002C8F04 /* WeatherDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeatherDetailsView.xib; sourceTree = "<group>"; };
+		95B4B63B1DB3CAAA002C8F04 /* WeatherDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherDetailsView.h; sourceTree = "<group>"; };
+		95B4B63C1DB3CAAA002C8F04 /* WeatherDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherDetailsView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +98,7 @@
 				9586736B1D2D479A0048C024 /* Model */,
 				950940AA1D3D376900ACEF1D /* Cell */,
 				950A8AAB1DB2582000D940FC /* Day Weather */,
+				95B4B6381DB3C9D0002C8F04 /* WeatherDetails */,
 				95006D211CE79C3A00F3B685 /* AppDelegate.h */,
 				95006D221CE79C3A00F3B685 /* AppDelegate.m */,
 				95006D3B1CE7A9A700F3B685 /* CitiesTableViewController.h */,
@@ -155,6 +161,16 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		95B4B6381DB3C9D0002C8F04 /* WeatherDetails */ = {
+			isa = PBXGroup;
+			children = (
+				95B4B6391DB3CA6E002C8F04 /* WeatherDetailsView.xib */,
+				95B4B63B1DB3CAAA002C8F04 /* WeatherDetailsView.h */,
+				95B4B63C1DB3CAAA002C8F04 /* WeatherDetailsView.m */,
+			);
+			name = WeatherDetails;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -213,6 +229,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95B4B63A1DB3CA6E002C8F04 /* WeatherDetailsView.xib in Resources */,
 				950940C41D3D89FC00ACEF1D /* Weather.sqlite-shm in Resources */,
 				950940C51D3D89FC00ACEF1D /* Weather.sqlite-wal in Resources */,
 				95006D311CE79C3A00F3B685 /* LaunchScreen.storyboard in Resources */,
@@ -230,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				950A8AAA1DB2574A00D940FC /* DayWeatherDataSource.m in Sources */,
+				95B4B63D1DB3CAAA002C8F04 /* WeatherDetailsView.m in Sources */,
 				950940A31D2D841E00ACEF1D /* City.m in Sources */,
 				950940A21D2D841E00ACEF1D /* _City.m in Sources */,
 				95006D2C1CE79C3A00F3B685 /* Weather.xcdatamodeld in Sources */,

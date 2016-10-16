@@ -11,6 +11,7 @@
 @interface DayWeatherDataSource : NSObject <UITableViewDataSource>
 
 @property (weak, nonatomic) UITableView* dayWeatherTableView;
+@property (strong, nonatomic) NSNumber* cityID;
 
 - (void) load;
 
