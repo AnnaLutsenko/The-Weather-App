@@ -27,7 +27,7 @@
                                 <rect key="frame" x="0.0" y="136" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vyx-w3-D1c" id="OQI-7m-eUD">
-                                    <frame key="frameInset" width="320" height="43"/>
+                                    <frame key="frameInset" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -85,7 +85,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="z5H-vZ-w3s" id="epn-cV-tqk">
-                                            <frame key="frameInset" width="320" height="39"/>
+                                            <frame key="frameInset" width="320" height="39.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dt9-d9-Sh2">
@@ -104,7 +104,7 @@
                                         <rect key="frame" x="0.0" y="40" width="320" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AVc-gr-jYa" id="nL4-iJ-u6I">
-                                            <frame key="frameInset" width="320" height="99"/>
+                                            <frame key="frameInset" width="320" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tOv-Uj-neo">
@@ -163,21 +163,21 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="227" id="ut5-HG-9ec">
-                                        <rect key="frame" x="0.0" y="140" width="320" height="227"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="225" id="ut5-HG-9ec">
+                                        <rect key="frame" x="0.0" y="140" width="320" height="225"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ut5-HG-9ec" id="ZLB-9z-2Xn">
-                                            <frame key="frameInset" width="320" height="226"/>
+                                            <frame key="frameInset" width="320" height="224.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yFb-SC-4xT">
+                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="32" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yFb-SC-4xT">
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <prototypes>
-                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dayCell" id="D7q-xp-Eb3">
-                                                            <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dayCell" rowHeight="22" id="D7q-xp-Eb3" customClass="DayCellTableViewCell">
+                                                            <rect key="frame" x="0.0" y="28" width="320" height="22"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="D7q-xp-Eb3" id="ecd-LP-IAt">
-                                                                <frame key="frameInset" width="320" height="43"/>
+                                                                <frame key="frameInset" width="320" height="21.5"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xv9-fD-mIZ">
@@ -211,6 +211,11 @@
                                                                     <constraint firstItem="vLF-Fr-3Nr" firstAttribute="centerY" secondItem="ecd-LP-IAt" secondAttribute="centerY" id="wBr-Wv-Kfg"/>
                                                                 </constraints>
                                                             </tableViewCellContentView>
+                                                            <connections>
+                                                                <outlet property="dayLabel" destination="xv9-fD-mIZ" id="gW0-VI-VAj"/>
+                                                                <outlet property="dayTimeLbl" destination="JC1-Ms-3SS" id="Whc-le-aAl"/>
+                                                                <outlet property="nightTimeLbl" destination="vLF-Fr-3Nr" id="NLH-qq-fqN"/>
+                                                            </connections>
                                                         </tableViewCell>
                                                     </prototypes>
                                                 </tableView>
@@ -235,6 +240,7 @@
                     <connections>
                         <outlet property="TempCollectionView" destination="tOv-Uj-neo" id="6lG-S1-WqB"/>
                         <outlet property="cityNameLbl" destination="Dt9-d9-Sh2" id="t81-Gd-GcF"/>
+                        <outlet property="dayWeatherTableView" destination="yFb-SC-4xT" id="PJP-Rh-TnV"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q7S-3o-3zp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -254,7 +260,7 @@
                                 <rect key="frame" x="0.0" y="92" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UKK-5c-lhT" id="clf-wo-58O">
-                                    <frame key="frameInset" width="287" height="43"/>
+                                    <frame key="frameInset" width="287" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>

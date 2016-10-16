@@ -8,6 +8,7 @@
 
 #import "WeatherViewController.h"
 #import "TemperatureCollectionViewCell.h"
+#import "DayWeatherDataSource.h"
 
 @interface WeatherViewController ()
 
@@ -15,9 +16,20 @@
 
 @property (strong, nonatomic) NSArray* arrayWithWeater;
 
+@property (strong, nonatomic) DayWeatherDataSource* dayWeatherDataSource;
+
 @end
 
 @implementation WeatherViewController
+
+- (DayWeatherDataSource*) dayWeatherDataSource {
+    if (!_dayWeatherDataSource) {
+        _dayWeatherDataSource = [DayWeatherDataSource new];
+        _dayWeatherDataSource.dayWeatherTableView = self.dayWeatherTableView;
+        _dayWeatherDataSource.dayWeatherTableView.dataSource = _dayWeatherDataSource;
+    }
+    return _dayWeatherDataSource;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,6 +38,11 @@
     self.title = self.country;
     
     self.session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    
+    [self.dayWeatherDataSource load];
+    
+    
+    
 }
 
 - (void) viewWillAppear:(BOOL)animated {

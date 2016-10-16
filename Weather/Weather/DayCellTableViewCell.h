@@ -10,4 +10,8 @@
 
 @interface DayCellTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel* dayLabel;
+@property (weak, nonatomic) IBOutlet UILabel* dayTimeLbl;
+@property (weak, nonatomic) IBOutlet UILabel* nightTimeLbl;
+
 @end
