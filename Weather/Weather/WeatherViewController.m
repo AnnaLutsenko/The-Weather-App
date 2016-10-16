@@ -41,8 +41,8 @@
     self.session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     
     [self.dayWeatherDataSource load];
-    
-    
+    self.weatherDetailsView.cityID = self.cityID;
+    [self.weatherDetailsView loadWeatherDetails];
     
     
 }
@@ -144,7 +144,7 @@
     //     Если мы флоат просто присвоим инту - просто обрежется дробная часть.
     //     -273 это перевод из кельвинов в цельсии
     
-    cell.tempLbl.text = [NSString stringWithFormat:@"%li", (long)temperature];
+    cell.tempLbl.text = [NSString stringWithFormat:@"%li°", (long)temperature];
     
     // cell.tempLabel.text = [NSString stringWithFormat:@"%@", self.arrayWithWeater[indexPath.row][@"main"][@"temp"]];
     

@@ -64,8 +64,8 @@
         cell = [[DayCellTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
-    cell.dayTimeLbl.text = [NSString stringWithFormat:@"%li", (long)roundf([self.arrayWithWeater[indexPath.row][@"temp"][@"max"] floatValue]) - 273];
-    cell.nightTimeLbl.text = [NSString stringWithFormat:@"%li", (long)(roundf([self.arrayWithWeater[indexPath.row][@"temp"][@"min"] floatValue]) - 273)];
+    cell.dayTimeLbl.text = [NSString stringWithFormat:@"%li°", (long)roundf([self.arrayWithWeater[indexPath.row][@"temp"][@"max"] floatValue]) - 273];
+    cell.nightTimeLbl.text = [NSString stringWithFormat:@"%li°", (long)(roundf([self.arrayWithWeater[indexPath.row][@"temp"][@"min"] floatValue]) - 273)];
 
     
     NSInteger timeinterval = [self.arrayWithWeater[indexPath.row][@"dt"] integerValue];
