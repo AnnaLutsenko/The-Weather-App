@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "WeatherDetailsView.h"
+#import "City.h"
 
 @interface WeatherViewController : UITableViewController <UICollectionViewDataSource>
+
+@property (weak, nonatomic) City* city;
 
 @property (weak, nonatomic) IBOutlet UITableView *dayWeatherTableView;
 @property (weak, nonatomic) IBOutlet UICollectionView *TempCollectionView;
@@ -19,7 +22,6 @@
 @property (strong, nonatomic) NSString* country;
 @property (strong, nonatomic) NSURL* cityURL;
 @property (strong, nonatomic) NSNumber* cityID;
-
 
 @property (weak, nonatomic) IBOutlet UILabel* cityNameLbl;
 

@@ -82,7 +82,7 @@
                             <tableViewSection id="D8y-ZL-3y7">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="40" id="z5H-vZ-w3s">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                                        <rect key="frame" x="0.0" y="64" width="320" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="z5H-vZ-w3s" id="epn-cV-tqk">
                                             <frame key="frameInset" width="320" height="39"/>
@@ -101,7 +101,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="AVc-gr-jYa">
-                                        <rect key="frame" x="0.0" y="40" width="320" height="100"/>
+                                        <rect key="frame" x="0.0" y="104" width="320" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AVc-gr-jYa" id="nL4-iJ-u6I">
                                             <frame key="frameInset" width="320" height="99"/>
@@ -164,7 +164,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="225" id="ut5-HG-9ec">
-                                        <rect key="frame" x="0.0" y="140" width="320" height="225"/>
+                                        <rect key="frame" x="0.0" y="204" width="320" height="225"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ut5-HG-9ec" id="ZLB-9z-2Xn">
                                             <frame key="frameInset" width="320" height="224"/>
@@ -229,7 +229,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="213" id="vbi-su-b9e">
-                                        <rect key="frame" x="0.0" y="365" width="320" height="213"/>
+                                        <rect key="frame" x="0.0" y="429" width="320" height="213"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vbi-su-b9e" id="zo2-Cf-jK5">
                                             <frame key="frameInset" width="320" height="212"/>
@@ -255,7 +255,13 @@
                             <outlet property="delegate" destination="xup-T3-4T7" id="426-3S-8GJ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="hAB-tE-J2X"/>
+                    <navigationItem key="navigationItem" id="hAB-tE-J2X">
+                        <barButtonItem key="rightBarButtonItem" image="Location-ic" id="V9G-ue-9mc">
+                            <connections>
+                                <segue destination="iqO-v6-CS6" kind="presentation" id="i8A-nD-icy"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="TempCollectionView" destination="tOv-Uj-neo" id="6lG-S1-WqB"/>
                         <outlet property="cityNameLbl" destination="Dt9-d9-Sh2" id="t81-Gd-GcF"/>
@@ -265,7 +271,48 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q7S-3o-3zp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1588.125" y="40.140845070422536"/>
+            <point key="canvasLocation" x="-590.625" y="40.140845070422536"/>
+        </scene>
+        <!--Location View Controller-->
+        <scene sceneID="djJ-CY-ts6">
+            <objects>
+                <viewController id="S4H-qz-noT" customClass="LocationViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wP1-UN-rhG"/>
+                        <viewControllerLayoutGuide type="bottom" id="qXD-Ag-7K0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4x5-Dk-0Nm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8wx-pf-s00">
+                                <connections>
+                                    <outlet property="delegate" destination="S4H-qz-noT" id="QHT-qZ-yCj"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8wx-pf-s00" firstAttribute="top" secondItem="4x5-Dk-0Nm" secondAttribute="top" id="1vt-Ae-hk0"/>
+                            <constraint firstItem="8wx-pf-s00" firstAttribute="leading" secondItem="4x5-Dk-0Nm" secondAttribute="leading" id="E4m-Mk-QTa"/>
+                            <constraint firstAttribute="trailing" secondItem="8wx-pf-s00" secondAttribute="trailing" id="dFT-JB-nsj"/>
+                            <constraint firstItem="qXD-Ag-7K0" firstAttribute="top" secondItem="8wx-pf-s00" secondAttribute="bottom" id="wRj-Es-5dK"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="9vG-lk-KGe">
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="UIk-jt-ifB">
+                            <connections>
+                                <action selector="actionCancel:" destination="S4H-qz-noT" id="1pY-sW-zup"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="8wx-pf-s00" id="PnB-XX-Pwt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="agR-3O-zLf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1327.5" y="39.08450704225352"/>
         </scene>
         <!--Cities-->
         <scene sceneID="3Qb-4Y-Gfq">
@@ -320,5 +367,44 @@
             </objects>
             <point key="canvasLocation" x="-2407" y="-717"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1Lv-di-O1J">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="glH-vd-l8L" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qkb-uc-9vk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="xup-T3-4T7" kind="relationship" relationship="rootViewController" id="jBV-Xo-tpA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bKk-PB-3eU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1588.125" y="40.140845070422536"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wd3-zZ-gdA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iqO-v6-CS6" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="v69-LW-tPk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="S4H-qz-noT" kind="relationship" relationship="rootViewController" id="Nug-tg-rc8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UuP-Hy-2Yh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="330" y="39.08450704225352"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="Location-ic" width="22" height="22"/>
+    </resources>
 </document>

@@ -24,6 +24,9 @@
 		950940C51D3D89FC00ACEF1D /* Weather.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 950940C21D3D89FC00ACEF1D /* Weather.sqlite-wal */; };
 		950A8AAA1DB2574A00D940FC /* DayWeatherDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 950A8AA91DB2574A00D940FC /* DayWeatherDataSource.m */; };
 		950A8AAE1DB258A700D940FC /* DayCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 950A8AAD1DB258A700D940FC /* DayCellTableViewCell.m */; };
+		952503201DBBBEA5000BAF67 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9525031F1DBBBEA5000BAF67 /* LocationViewController.m */; };
+		952503231DBBBF07000BAF67 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952503221DBBBF07000BAF67 /* MapKit.framework */; };
+		952503261DBBD36B000BAF67 /* MKMapViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 952503251DBBD36B000BAF67 /* MKMapViewExt.m */; };
 		9560F68B1D16D903008A7A01 /* WeatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9560F68A1D16D903008A7A01 /* WeatherViewController.m */; };
 		95B4B63A1DB3CA6E002C8F04 /* WeatherDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95B4B6391DB3CA6E002C8F04 /* WeatherDetailsView.xib */; };
 		95B4B63D1DB3CAAA002C8F04 /* WeatherDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B4B63C1DB3CAAA002C8F04 /* WeatherDetailsView.m */; };
@@ -58,6 +61,11 @@
 		950A8AA91DB2574A00D940FC /* DayWeatherDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayWeatherDataSource.m; sourceTree = "<group>"; };
 		950A8AAC1DB258A700D940FC /* DayCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayCellTableViewCell.h; sourceTree = "<group>"; };
 		950A8AAD1DB258A700D940FC /* DayCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayCellTableViewCell.m; sourceTree = "<group>"; };
+		9525031E1DBBBEA5000BAF67 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
+		9525031F1DBBBEA5000BAF67 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
+		952503221DBBBF07000BAF67 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		952503241DBBD36B000BAF67 /* MKMapViewExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMapViewExt.h; sourceTree = "<group>"; };
+		952503251DBBD36B000BAF67 /* MKMapViewExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKMapViewExt.m; sourceTree = "<group>"; };
 		9560F6891D16D903008A7A01 /* WeatherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherViewController.h; sourceTree = "<group>"; };
 		9560F68A1D16D903008A7A01 /* WeatherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherViewController.m; sourceTree = "<group>"; };
 		95B4B6391DB3CA6E002C8F04 /* WeatherDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeatherDetailsView.xib; sourceTree = "<group>"; };
@@ -70,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				952503231DBBBF07000BAF67 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +90,7 @@
 			children = (
 				95006D1D1CE79C3A00F3B685 /* Weather */,
 				95006D1C1CE79C3A00F3B685 /* Products */,
+				952503211DBBBF07000BAF67 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,6 +119,10 @@
 				9560F68A1D16D903008A7A01 /* WeatherViewController.m */,
 				95006D241CE79C3A00F3B685 /* ViewController.h */,
 				95006D251CE79C3A00F3B685 /* ViewController.m */,
+				9525031E1DBBBEA5000BAF67 /* LocationViewController.h */,
+				9525031F1DBBBEA5000BAF67 /* LocationViewController.m */,
+				952503241DBBD36B000BAF67 /* MKMapViewExt.h */,
+				952503251DBBD36B000BAF67 /* MKMapViewExt.m */,
 				95006D271CE79C3A00F3B685 /* Main.storyboard */,
 				95006D2D1CE79C3A00F3B685 /* Assets.xcassets */,
 				95006D2F1CE79C3A00F3B685 /* LaunchScreen.storyboard */,
@@ -145,6 +159,14 @@
 				950A8AAD1DB258A700D940FC /* DayCellTableViewCell.m */,
 			);
 			name = "Day Weather";
+			sourceTree = "<group>";
+		};
+		952503211DBBBF07000BAF67 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				952503221DBBBF07000BAF67 /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		9586736B1D2D479A0048C024 /* Model */ = {
@@ -247,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				950A8AAA1DB2574A00D940FC /* DayWeatherDataSource.m in Sources */,
+				952503261DBBD36B000BAF67 /* MKMapViewExt.m in Sources */,
 				95B4B63D1DB3CAAA002C8F04 /* WeatherDetailsView.m in Sources */,
 				950940A31D2D841E00ACEF1D /* City.m in Sources */,
 				950940A21D2D841E00ACEF1D /* _City.m in Sources */,
@@ -255,6 +278,7 @@
 				95006D261CE79C3A00F3B685 /* ViewController.m in Sources */,
 				95006D3D1CE7A9A700F3B685 /* CitiesTableViewController.m in Sources */,
 				95006D401CE7AA5500F3B685 /* SearchTableViewController.m in Sources */,
+				952503201DBBBEA5000BAF67 /* LocationViewController.m in Sources */,
 				950940A91D3D360200ACEF1D /* TemperatureCollectionViewCell.m in Sources */,
 				95006D231CE79C3A00F3B685 /* AppDelegate.m in Sources */,
 				950A8AAE1DB258A700D940FC /* DayCellTableViewCell.m in Sources */,

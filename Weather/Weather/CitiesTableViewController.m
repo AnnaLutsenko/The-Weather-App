@@ -195,6 +195,7 @@ static NSString *kCityID = @"cityID";
     vc.country = selectedCity.country;
     vc.cityID = selectedCity.idCity;
     
+    vc.city = selectedCity;    
 }
 
 #pragma mark - SearchCitiesDelegate

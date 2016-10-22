@@ -9,6 +9,7 @@
 #import "WeatherViewController.h"
 #import "TemperatureCollectionViewCell.h"
 #import "DayWeatherDataSource.h"
+#import "LocationViewController.h"
 
 @interface WeatherViewController ()
 
@@ -17,6 +18,7 @@
 @property (strong, nonatomic) NSArray* arrayWithWeater;
 
 @property (strong, nonatomic) DayWeatherDataSource* dayWeatherDataSource;
+@property (strong, nonatomic) LocationViewController* locationVC;
 
 @end
 
@@ -43,6 +45,8 @@
     [self.dayWeatherDataSource load];
     self.weatherDetailsView.cityID = self.cityID;
     [self.weatherDetailsView loadWeatherDetails];
+    
+    
     
     
 }
@@ -169,14 +173,18 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    UINavigationController* nc = (UINavigationController*)segue.destinationViewController;
+    LocationViewController* locationVC = (LocationViewController*)nc.viewControllers[0];
+    
+    locationVC.latCoord = [self.city latCoordValue];
+    locationVC.lonCoord = [self.city lonCoordValue];
+    locationVC.title = [self.city name];
 }
-*/
 
 @end
