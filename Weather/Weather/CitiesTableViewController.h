@@ -11,6 +11,5 @@
 
 @interface CitiesTableViewController : UITableViewController <SearchCitiesDelegate>
 
-@property (strong, nonatomic) NSMutableArray* cities;
 
 @end

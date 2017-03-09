@@ -57,11 +57,6 @@
     [self reloadDataFromNet];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - NSURLSession & NSJSONSerialization
 
 - (void) reloadDataFromNet {
@@ -88,48 +83,6 @@
                  }] resume];
 }
 
-#pragma mark - UITableViewDataSource
-
-//- (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-//    
-//    return [NSString stringWithFormat:@"Weather in %@ in %@", self.cityName, self.country];
-//}
-
-
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    
-//    return (self.arrayWithWeater != nil) ? self.arrayWithWeater.count : 0;
-//}
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString* cellIdentifier = @"Cell";
-    WeatherCell* cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (!cell) {
-        cell = [[WeatherCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-    }
-    
-    NSInteger temperature = roundf([self.arrayWithWeater[indexPath.row][@"main"][@"temp"] floatValue]) - 273;
- 
-//     Функция round округлает значение.
-//     Если мы флоат просто присвоим инту - просто обрежется дробная часть.
-//     -273 это перевод из кельвинов в цельсии
- 
-    cell.tempLabel.text = [NSString stringWithFormat:@"%li", (long)temperature];
-    
-    // cell.tempLabel.text = [NSString stringWithFormat:@"%@", self.arrayWithWeater[indexPath.row][@"main"][@"temp"]];
-    
-    NSInteger timeinterval = [self.arrayWithWeater[indexPath.row][@"dt"] integerValue];
-    NSDate * date = [[NSDate alloc] initWithTimeIntervalSince1970:timeinterval];
-    NSDateFormatter *formatter = [NSDateFormatter new];
-    formatter.dateFormat = @"dd.MM.yyyy HH:mm";
-    cell.dateLabel.text = [formatter stringFromDate:date];
-    
-    //cell.dateLabel.text = [NSString stringWithFormat:@"%@",self.arrayWithWeater[indexPath.row][@"dt"]];
-    
-    return cell;
-}
-*/
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -159,10 +112,7 @@
     cell.dateLbl.text = [formatter stringFromDate:date];
     
     //cell.dateLabel.text = [NSString stringWithFormat:@"%@",self.arrayWithWeater[indexPath.row][@"dt"]];
-    
         
-    
-    
     return cell;
 }
 
@@ -185,6 +135,7 @@
     locationVC.latCoord = [self.city latCoordValue];
     locationVC.lonCoord = [self.city lonCoordValue];
     locationVC.title = [self.city name];
+    
 }
 
 @end

@@ -11,6 +11,7 @@
 #import "WeatherViewController.h"
 #import "City.h"
 #import "AppDelegate.h"
+#import "WeatherDataProvider.h"
 
 @interface CitiesTableViewController ()
 
@@ -20,70 +21,14 @@ static NSString *kCityID = @"cityID";
 
 @implementation CitiesTableViewController
 
-- (NSMutableArray*)cities {
-    
-    if (!_cities) {
-        _cities = [NSMutableArray new];
-    }
-    return _cities;
-}
+
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self loadCitiesArray];
-    
-    
     [self.tableView reloadData];
     
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    
-}
-
-#pragma mark - Save and Load
-
-- (void) saveCitiesArray {
-    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
-    NSMutableArray *idArray = [[NSMutableArray alloc] init];
-    
-    for (City* obj in self.cities) {
-        [idArray addObject:obj.idCity];
-    }
-    
-    [userDefaults setObject:idArray forKey:kCityID];
-    
-    [userDefaults synchronize];
-}
-
-- (void) loadCitiesArray {
-    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
-    NSArray *citiesID = [userDefaults objectForKey:kCityID];
-    if (citiesID == nil) {
-        return;
-    }
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    
-    NSEntityDescription *description = [NSEntityDescription entityForName:@"City"
-                                                   inManagedObjectContext:appDelegate.managedObjectContext];
-    [request setEntity:description];
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"idCity IN %@", citiesID];
-    [request setPredicate:predicate];
-    
-    NSError *requestError = nil;
-    NSArray *idArray = [appDelegate.managedObjectContext executeFetchRequest:request error:&requestError];
-    
-    if (requestError) {
-      NSLog(@"%@", [requestError localizedDescription]);
-    }
-      
-    [self.cities addObjectsFromArray:idArray];
 }
 
 
@@ -101,7 +46,7 @@ static NSString *kCityID = @"cityID";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return [self.cities count];
+    return [[[WeatherDataProvider shared] cities] count];
 }
 
 
@@ -114,7 +59,8 @@ static NSString *kCityID = @"cityID";
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     
-    City* city = self.cities[indexPath.row];
+    City* city = [[WeatherDataProvider shared] cityWithIndex:indexPath.row];
+//    [[WeatherDataProvider shared] cities][indexPath.row];
     
     cell.textLabel.text = city.name;
     
@@ -126,10 +72,12 @@ static NSString *kCityID = @"cityID";
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.cities removeObjectAtIndex:indexPath.row];
+//    [[[WeatherDataProvider shared] cities] removeObjectAtIndex:indexPath.row];
+    
+    [[WeatherDataProvider shared] deleteCityWithIndex:indexPath.row];
+    
     [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
    
-    [self saveCitiesArray];
 }
 
 /*
@@ -185,11 +133,13 @@ static NSString *kCityID = @"cityID";
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    
+    
     WeatherViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"WeatherVC"];
     
     [self.navigationController pushViewController:vc animated:YES];
     
-    City* selectedCity = [self.cities objectAtIndex:indexPath.row];
+    City* selectedCity = [[[WeatherDataProvider shared] cities] objectAtIndex:indexPath.row];
     vc.cityURL = selectedCity.cityURL;
     vc.cityName = selectedCity.name;
     vc.country = selectedCity.country;
@@ -202,9 +152,9 @@ static NSString *kCityID = @"cityID";
 
 -(void) citySelected:(City*) city {
     
-    [self.cities addObject:city];
+//    [[[WeatherDataProvider shared] cities] addObject:city];
     
-    [self saveCitiesArray];
+    [[WeatherDataProvider shared] addCity:city];
     
     [self.tableView reloadData];
 }

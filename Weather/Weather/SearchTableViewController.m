@@ -9,6 +9,7 @@
 #import "SearchTableViewController.h"
 #import "AppDelegate.h"
 #import "City.h"
+#import "WeatherDataProvider.h"
 
 @interface SearchTableViewController ()
 
@@ -130,40 +131,10 @@ static NSString *kCityID = @"cityID";
 // filteredContentList is search array from actual array.
 
 - (void)searchTableList {
-    
-    //Remove all objects first.
     [self.filteredContentList removeAllObjects];
     
-    NSString *searchString = self.citySearchBar.text;
-    
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    
-    NSEntityDescription *description = [NSEntityDescription entityForName:@"City"
-                                                   inManagedObjectContext:appDelegate.managedObjectContext];
-    
-    [request setEntity:description];
-//     [request setResultType:NSDictionaryResultType];
-    
-    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
-    NSArray *citiesID = [userDefaults objectForKey:kCityID];
-    NSString *predicateFormat;
-    NSPredicate *predicate;
-    if (citiesID == nil) {
-        predicate = [NSPredicate predicateWithFormat:@"name beginswith[c] %@", searchString];
-    } else {
-        predicate = [NSPredicate predicateWithFormat:@"(name beginswith[c] %@) AND !(idCity IN %@)", searchString, citiesID];
-    }
-    
-    [request setPredicate:predicate];
-    
-    NSError *requestError = nil;
-    NSArray *resultArray = [appDelegate.managedObjectContext executeFetchRequest:request error:&requestError];
-    
-    if (requestError) {
-        NSLog(@"%@", [requestError localizedDescription]);
-    }   
+    WeatherDataProvider *dataProvider = [WeatherDataProvider shared];
+    NSArray *resultArray = [dataProvider searchCity:self.citySearchBar.text];
 
     if(self.contentList.count > 0) {
         [self.contentList removeAllObjects];
@@ -187,7 +158,7 @@ static NSString *kCityID = @"cityID";
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    NSLog(@"Text change - %d", self.isSearching);
+   // NSLog(@"Text change - %d", self.isSearching);
     
     //Remove all objects first.
     [self.filteredContentList removeAllObjects];
